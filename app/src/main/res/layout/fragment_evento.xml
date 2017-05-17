@@ -1,0 +1,180 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.EventoFragment"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <EditText
+        android:id="@+id/nome"
+        android:layout_width="269dp"
+        android:layout_height="54dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/endereco"
+        android:layout_marginTop="133dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/endereco"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+    <EditText
+        android:id="@+id/endereco"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Endereço"
+
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/descricao"
+        app:layout_constraintTop_toBottomOf="@+id/nome"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/descricao"
+        android:layout_marginTop="5dp"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <EditText
+        android:id="@+id/descricao"
+        android:layout_width="269dp"
+        android:layout_height="84dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Descrição"
+
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/endereco"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="58dp" />
+
+    <EditText
+        android:id="@+id/dtInicio"
+        android:layout_width="114dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="151dp"
+        android:layout_marginTop="151dp"
+        android:ems="10"
+
+        android:inputType="date"
+        android:text="17/05/2017"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintLeft_toLeftOf="@+id/descricao"
+        app:layout_constraintTop_toTopOf="@+id/endereco"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintVertical_bias="0.116" />
+
+    <EditText
+        android:id="@+id/dtFim"
+        android:layout_width="116dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:inputType="date"
+        android:text="17/05/2017"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/valor"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/descricao"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintLeft_toRightOf="@+id/chkpago"
+        android:layout_marginLeft="37dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/descricao"
+        android:layout_marginEnd="8dp" />
+
+    <CheckBox
+        android:id="@+id/chkpago"
+        android:layout_width="116dp"
+        android:layout_height="0dp"
+        android:text="Pago"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="58dp"
+        app:layout_constraintBottom_toBottomOf="@+id/valor"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/dtFim"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="58dp"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <EditText
+        android:id="@+id/valor"
+        android:layout_width="112dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:text="R$ 10,00"
+        android:inputType="numberDecimal"
+
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        android:layout_marginTop="12dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="17dp"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintRight_toRightOf="@+id/descricao"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/dtFim"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/dtInicio" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="82dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="82dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apagar"
+
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="82dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="82dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/img"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/nome"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintLeft_toLeftOf="@+id/nome" />
+
+</android.support.constraint.ConstraintLayout>

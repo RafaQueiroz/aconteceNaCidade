@@ -21,4 +21,9 @@
     <!-- Strings related to evento lista -->
     <string name="event_name">Nome do Evento</string>
     <string name="event_dt_inicio">17/05/2017</string>
+    <string name="data">Data</string>
+    <string name="imagem_do_evento">Imagem do Evento</string>
+    <string name="ok_button">OK Button</string>
+
+
 </resources>

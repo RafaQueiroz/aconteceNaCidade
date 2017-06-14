@@ -19,7 +19,8 @@
         android:layout_marginTop="51dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/imagem_do_evento" />
 
     <EditText
         android:id="@+id/eventoNome"
@@ -55,7 +56,7 @@
         android:layout_height="43dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Data"
+        android:text="@string/data"
         app:layout_constraintRight_toLeftOf="@+id/eventoDtInicio"
         tools:layout_constraintRight_creator="1"
         android:layout_marginEnd="4dp"
@@ -78,6 +79,7 @@
         android:layout_marginEnd="25dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="16dp"
-        android:layout_marginRight="25dp" />
+        android:layout_marginRight="25dp"
+        android:contentDescription="@string/ok_button" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package progweb3.acontecenacidade;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -46,8 +47,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         String dateString = sdf.format(evento.getDtInicio());
         viewHolder.viewData.setText(dateString);
 
-        //=====>AQUI NÃO MUDA A IMG ESTA FICA NA EVEN1
-        viewHolder.viewImag.setImageResource(R.drawable.even1);
+        //=====>AGORA MUDA
+        int id = contexto.getResources().getIdentifier("drawable/even"+evento.getIdImagem(),
+                "drawable", contexto.getPackageName());
+        viewHolder.viewImag.setImageResource(id);
 
         /*viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +59,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             }
         });*/
     }
-
     private void removeItem(int position) {
         listaEventos.remove(position);
         notifyItemRemoved(position);

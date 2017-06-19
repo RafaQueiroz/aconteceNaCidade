@@ -1,6 +1,7 @@
 package progweb3.acontecenacidade;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
         String dateString = sdf.format(evento.getDtInicio());
         viewHolder.viewData.setText(dateString);
-        viewHolder.viewImag.setImageResource(evento.getIdImagem());
+
+        //=====>AQUI NÃO MUDA A IMG ESTA FICA NA EVEN1
+        viewHolder.viewImag.setImageResource(R.drawable.even1);
 
         /*viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override

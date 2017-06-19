@@ -1,6 +1,7 @@
 package progweb3.acontecenacidade;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by KOSMOS00 on 17/05/2017.
@@ -26,6 +27,13 @@ public class Evento {
         this.pgto = pgto;
         this.valor = valor;
     }
+
+    public Evento(String nome, Date data, int imagen) {
+        this.nome = nome;
+        this.dtInicio = data;
+        this.idImagem = imagen;
+    }
+
 
     public String getNome() {
         return nome;
@@ -90,4 +98,31 @@ public class Evento {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Evento{" +
+                "nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", endereco=" + endereco +
+                ", dtInicio=" + dtInicio +
+                ", idImagem=" + idImagem +
+                '}';
+    }
+
+    private static String nomes[] = {"Evento 1", "Evento 2", "Evento 3"};
+    private static Date myDate = new Date();
+    private static Date datas[] = { myDate, myDate, myDate};
+    private static int imagens[] = {1,2,3};
+
+    public static Evento carrega() {
+        return new Evento(nomes[getRandomValue(0, 2)],
+                datas[getRandomValue(0, 2)],  imagens[getRandomValue(0, 2)]);
+    }
+
+    private static int getRandomValue(int low, int high) {
+        return new Random().nextInt(high - low) + low;
+    }
 }
+
+

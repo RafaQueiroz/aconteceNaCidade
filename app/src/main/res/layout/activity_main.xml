@@ -8,18 +8,5 @@
     tools:layout_editor_absoluteY="0dp"
     tools:layout_editor_absoluteX="0dp">
 
-    <fragment
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        class="layout.EventoFragment"
-        android:id="@+id/detalhe_fragmento"
-        tools:layout="@layout/fragment_evento"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-
 
 </android.support.constraint.ConstraintLayout>

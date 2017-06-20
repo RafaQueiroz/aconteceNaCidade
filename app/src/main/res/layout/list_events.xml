@@ -20,36 +20,40 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
         android:id="@+id/eventoNome"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
-        android:textAlignment="center"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_below="@+id/imageView"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/event_name"
-        android:layout_below="@+id/imageView"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/eventoDtInicio"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:textAlignment="center"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_alignTop="@+id/imageView"
         android:ems="10"
         android:inputType="date"
         android:text="@string/event_dt_inicio"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintRight_toRightOf="@+id/eventoNome"
         app:layout_constraintTop_toBottomOf="@+id/eventoNome"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView" />
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
 </RelativeLayout>

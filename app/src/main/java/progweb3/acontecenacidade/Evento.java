@@ -8,16 +8,20 @@ import java.util.Random;
  */
 
 public class Evento {
+    private int id;
     private String nome;
     private String descricao;
-    private Endereco endereco;
+    private String endereco;
     private Date dtInicio;
     private Date dtFim;
     private int idImagem;
     private boolean pgto;
     private double valor;
 
-    public Evento(String nome, String descricao, Endereco endereco, Date dtInicio, Date dtFim, int idImagem, boolean pgto, double valor) {
+    public Evento(){};
+
+    public Evento(int id, String nome, String descricao, String endereco, Date dtInicio, Date dtFim, int idImagem, boolean pgto, double valor) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.endereco = endereco;
@@ -51,11 +55,11 @@ public class Evento {
         this.descricao = descricao;
     }
 
-    public Endereco getEndereco() {
+    public String getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
 
@@ -98,6 +102,10 @@ public class Evento {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public int getId() {    return id;   }
+
+    public void setId(int id) {      this.id = id;   }
 
     @Override
     public String toString() {

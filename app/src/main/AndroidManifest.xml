@@ -24,7 +24,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".list_events" />
-        <activity android:name=".ListEvents"></activity>
+        <activity android:name=".ListEvents" />
+        <activity android:name=".EventActivity"></activity>
     </application>
 
 </manifest>

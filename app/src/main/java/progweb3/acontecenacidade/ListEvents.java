@@ -39,8 +39,10 @@ public class ListEvents extends AppCompatActivity implements ClickRecycler {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listaEventos.add(Evento.carrega());
-                adapter.notifyDataSetChanged();
+               //listaEventos.add(Evento.carrega());
+               // adapter.notifyDataSetChanged();
+                Intent i = new Intent (ListEvents.this, EventActivity.class);
+                startActivity(i);
 
             }
         });

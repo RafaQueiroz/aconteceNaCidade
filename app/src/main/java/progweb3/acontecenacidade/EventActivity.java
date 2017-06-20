@@ -71,6 +71,5 @@ public class EventActivity extends Activity {
         dtFim.setText("");
         valor.setText("");
 
-
     }
 }

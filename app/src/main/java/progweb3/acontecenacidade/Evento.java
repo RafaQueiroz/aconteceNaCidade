@@ -124,8 +124,8 @@ public class Evento {
     private static int imagens[] = {1,2,3};
 
     public static Evento carrega() {
-        return new Evento(nomes[getRandomValue(0, 2)],
-                datas[getRandomValue(0, 2)],  imagens[getRandomValue(0, 2)]);
+        return new Evento(nomes[getRandomValue(0, 3)],
+                datas[getRandomValue(0, 3)],  imagens[getRandomValue(0, 3)]);
     }
 
     private static int getRandomValue(int low, int high) {

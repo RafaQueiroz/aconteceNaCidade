@@ -25,7 +25,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".list_events" />
         <activity android:name=".ListEvents" />
-        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".EventActivity" />
+        <activity android:name=".CadastraUsuarioFormActivity"></activity>
     </application>
 
 </manifest>

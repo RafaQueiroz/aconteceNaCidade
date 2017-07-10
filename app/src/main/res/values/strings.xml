@@ -7,8 +7,9 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_register">Cadastrar</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
@@ -23,7 +24,18 @@
     <string name="event_dt_inicio">17/05/2017</string>
     <string name="data">Data</string>
     <string name="imagem_do_evento">Imagem do Evento</string>
-    <string name="ok_button">OK Button</string>
+    <string name="ok_button">OK</string>
+
+
+    <!-- Strings related to Usuario -->
+    <string name="user_name">Nome</string>
+    <string name="user_email">E-mail</string>
+    <string name="user_pass">Senha</string>
+    <string name="user_confirm_pass">Consfirmar Senha</string>
+
+
+    <!-- String related Textos Genéricos-->
+    <string name="btn_salvar">Salvar</string>
 
 
 </resources>

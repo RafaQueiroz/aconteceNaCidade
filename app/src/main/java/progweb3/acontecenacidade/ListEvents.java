@@ -30,6 +30,10 @@ public class ListEvents extends AppCompatActivity implements ClickRecycler {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager (new LinearLayoutManager (this));
 
+        //TODO:Carregar eventos webservice
+
+
+
         for(int i=0; i< 3; i++)
             listaEventos.add(Evento.carrega());
             adapter = new MyAdapter(this, listaEventos, this);

@@ -14,7 +14,7 @@ import java.util.List;
 public class BDUtil extends SQLiteOpenHelper {
 
     private static final String BASE_DE_DADOS = "AconteceCidade";
-    private static final int VERSAO = 1;
+    private static final int VERSAO = 2;
 
     public BDUtil(Context context){
         super(context,BASE_DE_DADOS,null,VERSAO);
@@ -22,26 +22,41 @@ public class BDUtil extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        StringBuilder criarTabela = new StringBuilder();
-        criarTabela.append(" CREATE TABLE EVENTO (");
-        criarTabela.append(" _ID   INTEGER PRIMARY KEY AUTOINCREMENT, ");
-        criarTabela.append(" NOME  TEXT    NOT NULL,");
-        criarTabela.append(" DESCRICAO   TEXT    NOT NULL,");
-        criarTabela.append(" ENDERECO TEXT    NOT NULL,");
-        criarTabela.append(" DTINI TEXT    NOT NULL,");
-        criarTabela.append(" DTFIM TEXT    NOT NULL,");
-        criarTabela.append(" IDIMAGE INTEGER    NOT NULL,");
-        criarTabela.append(" PGTO BOOLEAN    NOT NULL,");
-        criarTabela.append(" VALOR DECIMAL    NOT NULL )");
-        db.execSQL(criarTabela.toString());
+        StringBuilder sqlEvento = new StringBuilder();
+        sqlEvento.append(
+                "CREATE TABLE EVENTO ( \n "+
+                " ID   INTEGER PRIMARY KEY AUTOINCREMENT, \n"+
+                " NOME  TEXT    NOT NULL, \n"+
+                " DESCRICAO   TEXT    NOT NULL, \n"+
+                " ENDERECO TEXT    NOT NULL, \n"+
+                " DTINI TEXT    NOT NULL, \n"+
+                " DTFIM TEXT    NOT NULL, \n"+
+                " IDIMAGE INTEGER    NOT NULL, \n"+
+                " PGTO BOOLEAN    NOT NULL, \n"+
+                " VALOR DECIMAL    NOT NULL )\n"
+        );
+
+        StringBuilder sqlUsuario = new StringBuilder();
+
+        sqlUsuario.append(
+                "CREATE TABLE USUARIO ( \n"+
+                " ID INTEGER PRIMARY KEY AUTOINCREMENT, \n"+
+                " NOME TEXT NOT NULL, \n"+
+                " EMAIL TEXT NOT NULL, \n"+
+                " SENHA TEXT NOT NULL,\n"+
+                " LOGADO BOOLEAN NOT NULL ) \n"
+        );
+
+
+        db.execSQL(sqlEvento.toString());
+        db.execSQL(sqlUsuario.toString());
     }
 
-    /*Método abaixo é executado quando troa a versão do BD*/
+    /*Método abaixo é executado quando troca a versão do BD*/
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS EVENTO");
         onCreate(db);
-
     }
 
     /*Método usado para obter a conexão com o BD*/

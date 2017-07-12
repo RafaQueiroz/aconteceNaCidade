@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -32,12 +33,12 @@ public class ListEvents extends AppCompatActivity implements ClickRecycler {
 
         //TODO:Carregar eventos webservice
 
-
-
         for(int i=0; i< 3; i++)
             listaEventos.add(Evento.carrega());
             adapter = new MyAdapter(this, listaEventos, this);
             recyclerView.setAdapter(adapter);
+
+        Log.i("ListaSize", "Tamanho:"+listaEventos.size());
 
         floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

@@ -37,7 +37,7 @@ public class UsuarioDao extends BDUtil {
 
         StringBuilder sql = new StringBuilder();
         sql.append(
-            "SELECT * FROM USUARIO WHERE LOGADO = TRUE"
+            "SELECT * FROM USUARIO WHERE LOGADO = 1"
         );
 
         Cursor c = db.rawQuery(sql.toString(), null);

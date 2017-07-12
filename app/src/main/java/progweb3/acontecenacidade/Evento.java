@@ -1,42 +1,47 @@
 package progweb3.acontecenacidade;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+
+import progweb3.acontecenacidade.modelo.Usuario;
 
 /**
  * Created by KOSMOS00 on 17/05/2017.
  */
 
 public class Evento {
-    private int id;
+    private Long id;
     private String nome;
     private String descricao;
     private String endereco;
-    private Date dtInicio;
-    private Date dtFim;
+    private Calendar dtInicio;
+    private Calendar dtFim;
     private int idImagem;
     private boolean pgto;
     private double valor;
+    private Usuario proprietario;
 
     public Evento(){};
 
-    public Evento(int id, String nome, String descricao, String endereco, Date dtInicio, Date dtFim, int idImagem, boolean pgto, double valor) {
-        this.id = id;
+    public Evento(String nome, String descricao, String endereco, Calendar dtInicio,
+                  Calendar dtFim, boolean pgto, double valor) {
+
         this.nome = nome;
         this.descricao = descricao;
         this.endereco = endereco;
         this.dtInicio = dtInicio;
         this.dtFim = dtFim;
-        this.idImagem = idImagem;
         this.pgto = pgto;
         this.valor = valor;
     }
 
-    public Evento(String nome, Date data, int imagen) {
+    public Evento(String nome, Calendar data, int idImagem){
         this.nome = nome;
         this.dtInicio = data;
-        this.idImagem = imagen;
+        this.idImagem = idImagem;
     }
+
 
 
     public String getNome() {
@@ -63,19 +68,20 @@ public class Evento {
         this.endereco = endereco;
     }
 
-    public Date getDtInicio() {
+    public Calendar getDtInicio() {
+
         return dtInicio;
     }
 
-    public void setDtInicio(Date dtInicio) {
+    public void setDtInicio(Calendar dtInicio) {
         this.dtInicio = dtInicio;
     }
 
-    public Date getDtFim() {
+    public Calendar getDtFim() {
         return dtFim;
     }
 
-    public void setDtFim(Date dtFim) {
+    public void setDtFim(Calendar dtFim) {
         this.dtFim = dtFim;
     }
 
@@ -103,29 +109,31 @@ public class Evento {
         this.valor = valor;
     }
 
-    public int getId() {    return id;   }
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(int id) {      this.id = id;   }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    @Override
-    public String toString() {
-        return "Evento{" +
-                "nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", endereco=" + endereco +
-                ", dtInicio=" + dtInicio +
-                ", idImagem=" + idImagem +
-                '}';
+    public Usuario getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(Usuario proprietario) {
+        this.proprietario = proprietario;
     }
 
     private static String nomes[] = {"Evento 1", "Evento 2", "Evento 3"};
-    private static Date myDate = new Date();
-    private static Date datas[] = { myDate, myDate, myDate};
+    private static Calendar datas[] = {Calendar.getInstance(),
+            Calendar.getInstance(), Calendar.getInstance()};
+
     private static int imagens[] = {1,2,3};
 
+
     public static Evento carrega() {
-        return new Evento(nomes[getRandomValue(0, 3)],
-                datas[getRandomValue(0, 3)],  imagens[getRandomValue(0, 3)]);
+        return new Evento(nomes[getRandomValue(0, 3)], datas[getRandomValue(0, 3)], imagens[getRandomValue(0, 3)]);
     }
 
     private static int getRandomValue(int low, int high) {

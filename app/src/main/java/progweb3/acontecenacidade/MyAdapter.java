@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import progweb3.acontecenacidade.Util.EventoUtil;
+
 /**
  * Created by KOSMOS00 on 19/06/2017.
  */
@@ -33,31 +35,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         System.out.println("Contexto="+viewGroup.getContext());
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_events, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.list_events, viewGroup, false);
+
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder viewHolder,final int position) {
-        Evento evento = listaEventos.get(position);
-        viewHolder.viewNome.setText(evento.getNome());
-        long date = System.currentTimeMillis();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM MM dd, yyyy h:mm a");
-        String dateString = sdf.format(evento.getDtInicio());
-        viewHolder.viewData.setText(dateString);
+        Evento evento = listaEventos.get(position);
+
+        viewHolder.viewNome.setText(evento.getNome());
+        viewHolder.viewData.setText(EventoUtil.calendarToString(
+                evento.getDtInicio().getTimeInMillis(), "dd/MM/yyyy"));
 
         //=====>AGORA MUDA
         int id = contexto.getResources().getIdentifier("drawable/even"+evento.getIdImagem(),
                 "drawable", contexto.getPackageName());
         viewHolder.viewImag.setImageResource(id);
 
-        /*viewHolder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeItem(position);
-            }
-        });*/
     }
     private void removeItem(int position) {
         listaEventos.remove(position);
@@ -79,9 +76,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(final View itemView) {
             super(itemView);
-            viewNome = (TextView) itemView.findViewById(R.id.eventoNome);
-            viewData = (TextView) itemView.findViewById(R.id.eventoDtInicio);
-            viewImag = (ImageView) itemView.findViewById(R.id.imageView);
+            viewNome = (TextView) itemView.findViewById(R.id.evento_list_nome);
+            viewData = (TextView) itemView.findViewById(R.id.evento_list_data_inicio);
+            viewImag = (ImageView) itemView.findViewById(R.id.evento_list_image);
             //delete = (ImageButton) itemView.findViewById(R.id.line_delete);
 
             //Setup the click listener

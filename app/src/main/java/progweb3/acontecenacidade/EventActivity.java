@@ -1,7 +1,11 @@
 package progweb3.acontecenacidade;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,67 +13,77 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+import progweb3.acontecenacidade.Util.EventoUtil;
+import progweb3.acontecenacidade.Util.RetrofitInicializador;
+import progweb3.acontecenacidade.dao.UsuarioDao;
+import progweb3.acontecenacidade.modelo.Usuario;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class EventActivity extends Activity {
+
+    private Usuario usuarioLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
 
-        Button salvar = (Button) findViewById(R.id.button3);
-        Button apagar = (Button) findViewById(R.id.button4);
+        usuarioLogado = new UsuarioDao(this).getUsuarioLogado();
 
-        salvar.setOnClickListener(new View.OnClickListener() {
+        if(usuarioLogado == null){
+            Intent vaiParaLogin = new Intent(EventActivity.this, LoginActivity.class);
+            startActivity(vaiParaLogin);
+        }
+
+        Button btnSalvar = (Button) findViewById(R.id.btn_salvar);
+        Button apagar = (Button) findViewById(R.id.btn_apagar);
+
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventoModel evento = new EventoModel(getBaseContext());
-                EditText nome = (EditText) findViewById(R.id.nome);
-                EditText descricao = (EditText) findViewById((R.id.descricao));
-                EditText endereco = (EditText) findViewById((R.id.endereco));
-                EditText dtIni = (EditText) findViewById(R.id.dtInicio);
-                EditText dtFim = (EditText) findViewById(R.id.dtFim);
-                //EditText idImg = (EditText) findViewById(R.id.imageView2);
-                Boolean pgto = findViewById(R.id.chkpago).isEnabled();
-                EditText valor = (EditText) findViewById(R.id.valor);
-                String resultado = evento.insert(
-                        nome.getText().toString(),
-                        descricao.getText().toString(),
-                        endereco.getText().toString(),
-                        dtIni.getText().toString(),
-                        dtFim.getText().toString(),
-                        2,
-                        pgto.booleanValue(),
-                        Double.parseDouble(valor.getText().toString())
-                );
-                Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
-                limparCampos();
+
+            //Fixme: Datas estão entrando como Null verificar no webservice
+            //Fixme: Avaliar como fazer upload de imagens
+
+            Evento evento = new EventoUtil(EventActivity.this).getEvento();
+            evento.setProprietario(usuarioLogado);
+
+            Call call = new RetrofitInicializador().getEventoService().insere(evento);
+            call.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+
+                    if(response.code() == 201){
+                        Toast.makeText(EventActivity.this,
+                                "Evento cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+
+                    Toast.makeText(EventActivity.this,
+                            "Ops! Não foi possível cadastrar o evento. Código: "+response.code(),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+                    Toast.makeText(EventActivity.this,
+                            "Ops! Não foi possível cadastrar o evento. Código: "+t.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+
             }
         });
 
         apagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                limparCampos();
+                new EventoUtil(EventActivity.this).limparEventoForm();
             }
         });
     }
 
-    private void limparCampos(){
 
-        EditText nome = (EditText) findViewById(R.id.nome);
-        EditText descricao = (EditText) findViewById((R.id.descricao));
-        EditText endereco = (EditText) findViewById((R.id.endereco));
-        EditText dtIni = (EditText) findViewById(R.id.dtInicio);
-        EditText dtFim = (EditText) findViewById(R.id.dtFim);
-        //EditText idImg = (EditText) findViewById(R.id.imageView2);
-        Boolean pgto = findViewById(R.id.chkpago).isEnabled();
-        EditText valor = (EditText) findViewById(R.id.valor);
-        nome.setText("");
-        descricao.setText("");
-        endereco.setText("");
-        dtIni.setText("");
-        dtFim.setText("");
-        valor.setText("");
-
-    }
 }

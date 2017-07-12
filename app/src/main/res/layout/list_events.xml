@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/evento_list_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -21,14 +21,14 @@
         tools:layout_constraintTop_creator="1" />
 
     <TextView
-        android:id="@+id/eventoNome"
+        android:id="@+id/evento_list_nome"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
-        android:layout_alignEnd="@+id/imageView"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_below="@+id/imageView"
+        android:layout_alignEnd="@+id/evento_list_image"
+        android:layout_alignLeft="@+id/evento_list_image"
+        android:layout_alignRight="@+id/evento_list_image"
+        android:layout_alignStart="@+id/evento_list_image"
+        android:layout_below="@+id/evento_list_image"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/event_name"
@@ -37,21 +37,21 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/eventoDtInicio"
+        android:id="@+id/evento_list_data_inicio"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_alignEnd="@+id/eventoNome"
-        android:layout_alignLeft="@+id/eventoNome"
-        android:layout_alignRight="@+id/eventoNome"
-        android:layout_alignStart="@+id/eventoNome"
-        android:layout_below="@+id/eventoNome"
+        android:layout_alignEnd="@+id/evento_list_nome"
+        android:layout_alignLeft="@+id/evento_list_nome"
+        android:layout_alignRight="@+id/evento_list_nome"
+        android:layout_alignStart="@+id/evento_list_nome"
+        android:layout_below="@+id/evento_list_nome"
         android:ems="10"
         android:inputType="date"
         android:text="@string/event_dt_inicio"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintRight_toRightOf="@+id/eventoNome"
-        app:layout_constraintTop_toBottomOf="@+id/eventoNome"
+        app:layout_constraintRight_toRightOf="@+id/evento_list_nome"
+        app:layout_constraintTop_toBottomOf="@+id/evento_list_nome"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
 

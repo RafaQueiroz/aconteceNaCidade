@@ -73,7 +73,7 @@ public class EventoModel {
             // Cria objetos do tipo tarefa
             evento =  new Evento();
             //adiciona os dados no objeto
-            evento.setId(cursor.getInt(cursor.getColumnIndex("_ID")));
+            evento.setId(cursor.getLong(cursor.getColumnIndex("_ID")));
             evento.setNome(cursor.getString(cursor.getColumnIndex("NOME")));
             evento.setDescricao(cursor.getString(cursor.getColumnIndex("DESCRICAO")));
             //evento.setDtInicio(cursor.getString(cursor.getColumnIndex("DTINI")));
@@ -89,7 +89,7 @@ public class EventoModel {
         Cursor cursor =  bdUtil.getConexao().rawQuery("SELECT * FROM "+ TABLE_NAME +" WHERE _ID = "+ codigo,null);
         cursor.moveToFirst();
         Evento e = new Evento();
-        e.setId(cursor.getInt(cursor.getColumnIndex("_ID")));
+        e.setId(cursor.getLong(cursor.getColumnIndex("_ID")));
         e.setNome(cursor.getString(cursor.getColumnIndex("NOME")));
         e.setDescricao(cursor.getString(cursor.getColumnIndex("DESCRICAO")));
         //t.setDtInicio(cursor.getString(cursor.getColumnIndex("DTINI")));
@@ -102,7 +102,7 @@ public class EventoModel {
         contentValues.put("DESCRICAO",   tarefa.getDescricao());
         //contentValues.put("DATA",       tarefa.getDtInicio());
         //atualiza o objeto usando a chave
-        bdUtil.getConexao().update(TABLE_NAME, contentValues, "_id = ?", new String[]{Integer.toString(tarefa.getId())});
+        bdUtil.getConexao().update(TABLE_NAME, contentValues, "_id = ?", new String[]{Long.toString(tarefa.getId())});
     }
 
 }

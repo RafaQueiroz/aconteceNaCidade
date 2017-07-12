@@ -12,9 +12,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import progweb3.acontecenacidade.Util.RetrofitInicializador;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ListEvents extends AppCompatActivity implements ClickRecycler {
     private static final int VERTICAL_ITEM_SPACE = 48;
@@ -31,27 +37,44 @@ public class ListEvents extends AppCompatActivity implements ClickRecycler {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager (new LinearLayoutManager (this));
 
-        //TODO:Carregar eventos webservice
-
-        for(int i=0; i< 3; i++)
-            listaEventos.add(Evento.carrega());
-            adapter = new MyAdapter(this, listaEventos, this);
-            recyclerView.setAdapter(adapter);
-
-        Log.i("ListaSize", "Tamanho:"+listaEventos.size());
-
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        Call<List<Evento>> call = new RetrofitInicializador().getEventoService().buscaTodosEventos();
+        call.enqueue(new Callback<List<Evento>>() {
             @Override
-            public void onClick(View v) {
-               //listaEventos.add(Evento.carrega());
-               // adapter.notifyDataSetChanged();
-                Intent i = new Intent (ListEvents.this, EventActivity.class);
-                startActivity(i);
+            public void onResponse(Call<List<Evento>> call, Response<List<Evento>> response) {
+
+                if(response.code() == 200 ){
+                    Toast.makeText(ListEvents.this, "Não foi possível buscar os eventos"+
+                            response.message(), Toast.LENGTH_SHORT).show();
+
+                    return;
+                }
+
+                List<Evento> listaEventos = response.body();
+
+                adapter = new MyAdapter(ListEvents.this, listaEventos, ListEvents.this);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Evento>> call, Throwable t) {
+
+                Toast.makeText(ListEvents.this, "Erro ao enviar requisição. "+t.getMessage(),
+                        Toast.LENGTH_SHORT).show();
 
             }
         });
+
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            Intent i = new Intent (ListEvents.this, EventActivity.class);
+            startActivity(i);
+            }
+        });
     }
+
     @Override
     public void onCustomClick(Object object) {
         System.out.println("funciona");

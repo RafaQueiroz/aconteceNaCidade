@@ -22,7 +22,7 @@ public class RetrofitInicializador {
 
     public RetrofitInicializador() {
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.10:8080/wsAconteceNaCidade/api/")
+                .baseUrl("http://10.10.8.172:8080/wsAconteceNaCidade/api/")
                 .client(client.build())
                 .addConverterFactory(GsonConverterFactory.create()).build();
     }

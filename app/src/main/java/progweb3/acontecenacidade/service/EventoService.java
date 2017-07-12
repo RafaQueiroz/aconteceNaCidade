@@ -1,8 +1,11 @@
 package progweb3.acontecenacidade.service;
 
+import java.util.List;
+
 import progweb3.acontecenacidade.Evento;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -12,7 +15,11 @@ import retrofit2.http.POST;
 public interface EventoService {
 
     @POST("eventos")
-    public Call<Void> insere(@Body Evento evento);
+    Call<Void> insere(@Body Evento evento);
+
+    @GET("/eventos")
+    Call<List<Evento>> buscaTodosEventos();
+
 
 
 }
